@@ -19,7 +19,8 @@ class BlogApiApplicationTests {
 	 void repoTest() {
 
 		String className = this.repo.getClass().getName();
-		String packageName = this.repo.getClass().getPackageName();
+		Package packageName = this.repo.getClass().getPackage();
+		this.repo.getClass().getPackage();
 		System.out.println(className);
 		System.out.println(packageName);
 
