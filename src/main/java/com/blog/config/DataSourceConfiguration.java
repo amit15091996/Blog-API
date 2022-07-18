@@ -22,17 +22,6 @@ public class DataSourceConfiguration {
 	@Value("${spring.datasource.password}")
 	private String password;
 
-//    @Bean(name = "h2DataSource")
-//    public DataSource h2DataSource()
-//    {
-//        DataSourceBuilder<DataSource> dataSourceBuilder = (DataSourceBuilder<DataSource>) DataSourceBuilder.create();
-//        dataSourceBuilder.driverClassName("org.h2.Driver");
-//        dataSourceBuilder.url("jdbc:h2:file:C:/temp/test");
-//        dataSourceBuilder.username("sa");
-//        dataSourceBuilder.password("");
-//        return dataSourceBuilder.build();
-//    }
-
     @Bean
     @Primary
     public DataSource mySqlDataSource()
