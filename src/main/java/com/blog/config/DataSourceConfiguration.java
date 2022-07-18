@@ -21,7 +21,7 @@ public class DataSourceConfiguration {
 	@Bean
 	@Primary
 	DataSource mySqlDataSource() {
-		DataSourceBuilder dataSourceBuilder = DataSourceBuilder.create();
+		DataSourceBuilder<?> dataSourceBuilder = DataSourceBuilder.create();
 		dataSourceBuilder.url(url);
 		dataSourceBuilder.username(username);
 		dataSourceBuilder.password(password);
