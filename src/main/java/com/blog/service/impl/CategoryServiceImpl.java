@@ -34,7 +34,6 @@ public class CategoryServiceImpl implements CategoryService {
 	@Override
 	public CategoryDto updateCategory(CategoryDto categoryDto, Integer categoryId) {
 
-		String m1="Category";
 		String m2="CategoryId";
 		
 		Category cat = this.categoryRepo.findById(categoryId)
