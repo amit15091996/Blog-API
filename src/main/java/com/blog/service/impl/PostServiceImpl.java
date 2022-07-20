@@ -17,6 +17,7 @@ import com.blog.repo.CategoryRepo;
 import com.blog.repo.PostRepo;
 import com.blog.repo.UserRepo;
 import com.blog.service.PostService;
+import java.util.Collections;
 
 @Service
 public class PostServiceImpl implements PostService {
@@ -112,7 +113,7 @@ public class PostServiceImpl implements PostService {
 	@Override
 	public List<PostDto> searchPost(String keyword) {
 
-		return null;
+		return Collections.emptyList();
 	}
 
 }
