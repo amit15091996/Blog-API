@@ -12,12 +12,12 @@ import com.blog.exception.ResourceNotFoundException;
 import com.blog.payload.CategoryDto;
 import com.blog.repo.CategoryRepo;
 import com.blog.service.CategoryService;
+import com.blog.utils.Constants;
 
 @Service
 public class CategoryServiceImpl implements CategoryService {
 
-	static String m1 = "Category";
-	static String m2 = "CategoryId";
+
 
 	@Autowired
 	private CategoryRepo categoryRepo;
@@ -36,7 +36,7 @@ public class CategoryServiceImpl implements CategoryService {
 	public CategoryDto updateCategory(CategoryDto categoryDto, Integer categoryId) {
 
 		Category cat = this.categoryRepo.findById(categoryId)
-				.orElseThrow(() -> new ResourceNotFoundException(m1, m2, categoryId));
+				.orElseThrow(() -> new ResourceNotFoundException(Constants.CATEGORY, Constants.CATEGORY_ID, categoryId));
 
 		cat.setCategoryTitle(categoryDto.getCategoryTitle());
 		cat.setCategoryDescription(categoryDto.getCategoryDescription());
@@ -48,7 +48,7 @@ public class CategoryServiceImpl implements CategoryService {
 	public void deleteCategory(Integer categoryId) {
 
 		Category cat = this.categoryRepo.findById(categoryId)
-				.orElseThrow(() -> new ResourceNotFoundException(m1, m2, categoryId));
+				.orElseThrow(() -> new ResourceNotFoundException(Constants.CATEGORY, Constants.CATEGORY_ID, categoryId));
 
 		this.categoryRepo.delete(cat);
 	}
@@ -57,7 +57,7 @@ public class CategoryServiceImpl implements CategoryService {
 	public CategoryDto getCategory(Integer categoryId) {
 
 		Category cat = this.categoryRepo.findById(categoryId)
-				.orElseThrow(() -> new ResourceNotFoundException(m1, m2, categoryId));
+				.orElseThrow(() -> new ResourceNotFoundException(Constants.CATEGORY, Constants.CATEGORY_ID, categoryId));
 
 		return this.modelMapper.map(cat, CategoryDto.class);
 
