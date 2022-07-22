@@ -1,5 +1,6 @@
 package com.blog.entity;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
@@ -33,7 +34,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class User implements UserDetails {
+public class User implements UserDetails, Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
