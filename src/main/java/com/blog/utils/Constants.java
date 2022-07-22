@@ -14,5 +14,6 @@ public class Constants {
 	public static final String POST_ID = "post_id";
 	public static final String COMMENT="comment";
 	public static final String COMMENT_ID= "comment_id";		
+	public static final String EMAIL= "email";
 
 }
