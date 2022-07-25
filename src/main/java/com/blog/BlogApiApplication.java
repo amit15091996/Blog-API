@@ -9,6 +9,9 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
 public class BlogApiApplication implements CommandLineRunner{
 	
@@ -27,6 +30,6 @@ public class BlogApiApplication implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 
-		System.out.println(this.passwordEncoder.encode("amit123"));
+		log.info(this.passwordEncoder.encode("amit123"));
 	}
 }
