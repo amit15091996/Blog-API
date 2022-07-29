@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.blog.exception.ApiException;
 import com.blog.payload.JwtAuthRequest;
 import com.blog.payload.JwtAuthResponse;
+import com.blog.payload.UserDTO;
 import com.blog.security.JwtTokenHelper;
+import com.blog.service.UserService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -33,6 +35,9 @@ public class AuthController {
 
 	@Autowired
 	private AuthenticationManager authenticationManager;
+	
+	@Autowired
+	private UserService userService;
 
 	@PostMapping("/login")
 	public ResponseEntity<JwtAuthResponse> createToken(@RequestBody JwtAuthRequest jwtAuthRequest) throws Exception {
@@ -60,5 +65,13 @@ public class AuthController {
 			
 		}
 		
+	}
+	
+	@PostMapping("/register")
+	public ResponseEntity<UserDTO> registerUser(@RequestBody UserDTO userDTO){
+		
+		UserDTO registedUser = this.userService.registerNewUser(userDTO);
+		
+		return new ResponseEntity<>(registedUser,HttpStatus.OK);
 	}
 }

@@ -9,6 +9,7 @@ import com.blog.payload.UserDTO;
 @Service
 public interface UserService {
 
+	UserDTO registerNewUser(UserDTO userDTO);
 	UserDTO createUser(UserDTO user);
 	UserDTO updateUser(UserDTO user, Integer userId);
 	UserDTO getUserById(Integer userId);
