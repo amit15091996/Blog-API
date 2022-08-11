@@ -1,5 +1,6 @@
 package com.blog.controller;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.blog.entity.User;
 import com.blog.exception.ApiException;
 import com.blog.payload.JwtAuthRequest;
 import com.blog.payload.JwtAuthResponse;
@@ -37,6 +39,9 @@ public class AuthController {
 	private AuthenticationManager authenticationManager;
 	
 	@Autowired
+	private ModelMapper mapper;
+	
+	@Autowired
 	private UserService userService;
 
 	@PostMapping("/login")
@@ -46,9 +51,10 @@ public class AuthController {
 		UserDetails userDetails = this.userDetailsService.loadUserByUsername(jwtAuthRequest.getUsername());
 
 		String token = this.jwtTokenHelper.generateToken(userDetails);
-
+		
 		JwtAuthResponse response = new JwtAuthResponse();
 		response.setToken(token);
+		response.setUser(this.mapper.map((User)userDetails, UserDTO.class));
 		return new ResponseEntity<>(response, HttpStatus.OK);
 
 	}

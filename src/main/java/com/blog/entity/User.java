@@ -38,10 +38,15 @@ public class User implements UserDetails {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int userId;
+	
 	@Column(name = "user_name", nullable = false, length = 100)
 	private String name;
+	
 	private String password;
+	
+	@Column(unique = true)
 	private String email;
+	
 	private String about;
 
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
