@@ -44,14 +44,14 @@ public class AuthController {
 	@Autowired
 	private UserService userService;
 
-	@PostMapping("/login")
+	@PostMapping("/login") 
 	public ResponseEntity<JwtAuthResponse> createToken(@RequestBody JwtAuthRequest jwtAuthRequest) throws Exception {
 
 		this.authenticate(jwtAuthRequest.getUsername(), jwtAuthRequest.getPassword());
 		UserDetails userDetails = this.userDetailsService.loadUserByUsername(jwtAuthRequest.getUsername());
 
 		String token = this.jwtTokenHelper.generateToken(userDetails);
-		
+
 		JwtAuthResponse response = new JwtAuthResponse();
 		response.setToken(token);
 		response.setUser(this.mapper.map((User)userDetails, UserDTO.class));

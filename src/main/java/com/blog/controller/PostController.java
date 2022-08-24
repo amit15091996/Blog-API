@@ -30,7 +30,7 @@ import com.blog.service.FileService;
 import com.blog.service.PostService;
 
 @RestController
-@RequestMapping("/api/")
+@RequestMapping("/api/v1/")
 public class PostController {
 
 	@Autowired

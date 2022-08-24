@@ -55,7 +55,7 @@ public class UserServiceImpl implements UserService {
 		User updated = this.userRepo.save(user);
 		return this.userToDto(updated);
 	}
-
+ 
 	@Override
 	public UserDTO getUserById(Integer userId) {
 

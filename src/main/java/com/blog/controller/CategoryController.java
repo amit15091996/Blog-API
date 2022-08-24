@@ -21,7 +21,7 @@ import com.blog.payload.CategoryDto;
 import com.blog.service.CategoryService;
 
 @RestController
-@RequestMapping("/api/categories")
+@RequestMapping("/api/v1/categories")
 public class CategoryController {
 
 	@Autowired
@@ -55,7 +55,7 @@ public class CategoryController {
 		return new ResponseEntity<>(categoryDto, HttpStatus.OK);
 	}
 
-	@GetMapping("/getAllCat")
+	@GetMapping("/")
 	public ResponseEntity<List<CategoryDto>> getCategories() {
 		List<CategoryDto> categories = this.categoryService.getCategories();
 		return ResponseEntity.ok(categories);
