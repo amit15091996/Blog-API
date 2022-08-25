@@ -14,7 +14,7 @@ import com.blog.payload.ApiResponse;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
-
+ 
 	@ExceptionHandler(ResourceNotFoundException.class)
 	public ResponseEntity<ApiResponse> resourceNotFoundException(ResourceNotFoundException exception) {
 		String message = exception.getMessage();
