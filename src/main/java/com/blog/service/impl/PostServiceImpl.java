@@ -49,8 +49,8 @@ public class PostServiceImpl implements PostService {
 				() -> new ResourceNotFoundException(Constants.CATEGORY, Constants.CATEGORY_ID, categoryId));
 
 		Post post = this.modelMapper.map(postDto, Post.class);
-		post.setImgName("default.png");
-		post.setDate(new Date());
+		post.setImgName("images.jpg");
+		post.setAddedDate(new Date());
 		post.setUser(user);
 		post.setCategory(category);
 
@@ -136,7 +136,7 @@ public class PostServiceImpl implements PostService {
 	@Override
 	public List<PostDto> searchPost(String keyword) {
 
-		List<Post> posts = this.postRepo.searchByTitle("%"+keyword+"%");
+		List<Post> posts = this.postRepo.searchByTitle("%" + keyword + "%");
 		return posts.stream().map(post -> this.modelMapper.map(post, PostDto.class)).collect(Collectors.toList());
 
 	}

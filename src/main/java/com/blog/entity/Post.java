@@ -22,7 +22,8 @@ import lombok.Setter;
 @Entity
 @Table(name = "posts")
 @Getter
-@Setter@NoArgsConstructor
+@Setter
+@NoArgsConstructor
 public class Post {
 
 	@Id
@@ -36,7 +37,7 @@ public class Post {
 
 	private String imgName;
 
-	private Date date;
+	private Date addedDate;
 
 	@ManyToOne
 	@JoinColumn(name="category_id")
